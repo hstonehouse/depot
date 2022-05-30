@@ -16,8 +16,8 @@
       margin: 0;
     }
   
-    tr.list_line_odd {
-      background-color: greenyellow;
+    tbody tr:nth-child(odd) {
+      background-color: blue;
     }
   
     td.image {
