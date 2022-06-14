@@ -50,35 +50,48 @@ header.main {
         padding: 1em;
     }
 
-    ul {
-        // and needs more padding
-        list-style: none;
-        margin: 0;
-        padding: 0;
+    .side_nav {
+        ul {
+            // and needs more padding
+            list-style: none;
+            margin: 0;
+            padding: 0;
 
-        @media (min-width: 30em) {
-            padding-right: 1em; // give desktop some extra space }
+            @media (min-width: 30em) {
+                padding-right: 1em; // give desktop some extra space }
 
-            li {
-                margin: 0;
-                padding: 0.5em;
-                text-transform: uppercase;
-                letter-spacing: 0.354em;
+                li {
+                    margin: 0;
+                    padding: 0.5em;
+                    text-transform: uppercase;
+                    letter-spacing: 0.354em;
 
-                a {
-                    color: #bfb;
-                    text-decoration: none;
-                }
+                    a {
+                        color: #bfb;
+                        text-decoration: none;
+                    }
 
-                a:hover {
-                    background: none;
-                    color: white;
+                    a:hover {
+                        background: none;
+                        color: white;
+                    }
                 }
             }
         }
-    }
 
-    main {
-        padding: 0.5em;
+        main {
+            padding: 0.5em;
+        }
     }
+}
+
+.notice, #notice {
+    background: #ffb;
+    border-radius: 0.5em;
+    border: solid 0.177em #882;
+    color: #882;
+    font-weight: bold;
+    margin-bottom: 1em;
+    padding: 1em 1.414em;
+    text-align: center;
 }
