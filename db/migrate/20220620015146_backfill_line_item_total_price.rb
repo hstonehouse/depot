@@ -8,5 +8,6 @@ class BackfillLineItemTotalPrice < ActiveRecord::Migration[6.1]
 
   def down
     # remove data in the total_price column
+    # we probably don't need this method because we should just remove the total_price column altogether
   end
 end
