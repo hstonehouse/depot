@@ -17,7 +17,8 @@ class Cart < ApplicationRecord
 
     def total_price
         line_items.to_a.sum { |item| item.total_price }
-        # turns the line_items object into an array and returns the sum
+        # turns the line_items object into an array using 'to_a'
+        # the sum() method accepts a block
     end
 end
 
