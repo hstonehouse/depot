@@ -1,9 +1,19 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  product: two
+  product: docker
   cart: one
+  quantity: 1
+  total_price: 2222
 
 two:
-  product: two
+  product: python
   cart: two
+  quantity: 1
+  total_price: 3000
+  
+three:
+  product: ruby
+  cart: one
+  quantity: 1
+  total_price: 1200

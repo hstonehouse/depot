@@ -1,16 +1,16 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
+docker:
   title: MyString1
   description: MyText
   image_url: 7apps.jpeg
-  price: 9.99
+  price: 2222
 
-two:
+python:
   title: MyString2
   description: MyText
   image_url: 7apps.jpeg
-  price: 9.99
+  price: 3000
 
 ruby:
   title: Programming Ruby 1.9 
@@ -19,5 +19,5 @@ ruby:
     language out there.  If you need to get working programs
     delivered fast, you should add Ruby to your toolbox.
   image_url: ruby.jpeg
-  price: 49.50 
+  price: 1200
   
