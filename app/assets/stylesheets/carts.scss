@@ -2,6 +2,10 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 .carts {
+    article {
+        margin-left: 15px;
+    }
+
     table {
         border-collapse: collapse;
     }
@@ -41,7 +45,7 @@
     }
 
     input[type="submit"] {
-        background-color: #881;
+        background-color: #282;
         border-radius: 0.354em;
         border: solid thin #441;
         color: white;
@@ -50,6 +54,15 @@
     }
 
     input[type="submit"]:hover {
-        background-color: #992;
+        background-color: #141;
+    }
+
+    .redbutton input[type="submit"] {
+        background-color: red;
+    }
+
+    .redbutton input[type="submit"]:hover {
+        background-color: rgb(126, 5, 5);
     }
 }
+
