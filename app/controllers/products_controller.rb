@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: %i[ show edit update destroy ]
+  rescue_from ActiveRecord::RecordNotFound, with: :nonexistent_product
 
   # GET /products or /products.json
   def index
@@ -67,5 +68,10 @@ class ProductsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def product_params
       params.require(:product).permit(:title, :description, :image_url, :price)
+    end
+
+    def nonexistent_product
+      logger.error "Attempt to access non-existent product #{params[:id]}"
+      redirect_to store_index_url, notice: 'Product does not exist'
     end
 end
