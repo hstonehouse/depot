@@ -14,7 +14,7 @@
             <%= sanitize(product.description) %>
             <%# sanitize prevents cross-site scripting %>
           </p>
-          <div class="price">
+          <div class="price product-<%= product.id %>">
             <%= number_to_currency(product.price) %>
             <%= button_to 'Add to Cart', line_items_path(product_id: product)%>
           </div>

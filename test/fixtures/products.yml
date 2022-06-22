@@ -2,18 +2,21 @@
 
 docker:
   title: MyString1
+  id: 1
   description: MyText
   image_url: 7apps.jpeg
   price: 2222
 
 python:
   title: MyString2
+  id: 2
   description: MyText
   image_url: 7apps.jpeg
   price: 3000
 
 ruby:
   title: Programming Ruby 1.9 
+  id: 3
   description: 
     Ruby is the fastest growing and most exciting dynamic
     language out there.  If you need to get working programs
