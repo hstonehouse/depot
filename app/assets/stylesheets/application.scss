@@ -85,7 +85,8 @@ header.main {
     }
 }
 
-.notice, #notice {
+.notice,
+#notice {
     background: #ffb;
     border-radius: 0.5em;
     border: solid 0.177em #882;
@@ -94,4 +95,21 @@ header.main {
     margin-bottom: 1em;
     padding: 1em 1.414em;
     text-align: center;
+}
+
+#cart {
+    article {
+        h2 {
+            margin-top: 0;
+        }
+
+        background: white;
+        border-radius: 0.5em;
+        margin: 1em;
+        padding: 1.414em;
+
+        @media (min-width: 30em) {
+            margin: 0; // desktop doesn't need this margin }
+        }
+    }
 }
