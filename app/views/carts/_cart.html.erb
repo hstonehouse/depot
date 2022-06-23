@@ -1,0 +1,26 @@
+<article>
+  <% if notice %>
+    <aside id="notice"><%= notice %></aside>
+  <% end %>
+
+  <h2>Your Pragmatic Cart</h2>
+
+  <table>
+    <tbody>
+      <%= render(@cart.line_items) %> 
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="2" style="text-align: right">Total:</td>
+        <td class="price"><%= number_to_currency(@cart.total_price) %></td>
+        <td></td>
+      </tr>
+    </tfoot>
+  </table>
+
+  <%= button_to 'Empty cart', @cart, 
+                method: :delete,
+                form_class: 'redbutton',
+                data: { confirm: 'Are you sure?' } %>
+
+</article>
