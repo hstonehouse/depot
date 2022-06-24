@@ -1,0 +1,6 @@
+cart = document.getElementById("cart")
+cart.innerHTML = "<%= j render(@cart) %>"
+
+<!-- j is an alias for escape_javascript() -->
+<!-- which converts the Ruby string into a format acceptable as input to JS -->
+<!-- everything except the erb executes on the browser -->
