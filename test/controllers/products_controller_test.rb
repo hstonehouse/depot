@@ -2,7 +2,8 @@ require "test_helper"
 
 class ProductsControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @product = products(:one)
+    @line_item = line_items(:one)
+    @product = products(:docker)
     @title = "The Great Book #{rand(1000)}"
   end
 
@@ -54,8 +55,12 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "can't delete product in cart" do
+    @cart = carts(:one)
+    @cart.add_product(@product)
+    # need to save because there are 2 steps to this test
+    @cart.save
     assert_difference('Product.count', 0) do
-      delete product_url(products(:two))
+      delete product_url(@product)
     end
 
     assert_redirected_to products_url
@@ -63,7 +68,7 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
 
   test "should destroy product" do
     assert_difference('Product.count', -1) do
-      delete product_url(products(:one))
+      delete product_url(products(:python))
     end
 
     assert_redirected_to products_url

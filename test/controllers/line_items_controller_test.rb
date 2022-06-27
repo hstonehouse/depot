@@ -1,4 +1,5 @@
 require "test_helper"
+require "capybara"
 
 class LineItemsControllerTest < ActionDispatch::IntegrationTest
   setup do
@@ -20,11 +21,6 @@ class LineItemsControllerTest < ActionDispatch::IntegrationTest
       post line_items_url, params: 
       { product_id: products(:ruby).id }
     end
-
-    follow_redirect!
-    
-    assert_select 'h2', 'Your Pragmatic Cart'
-    assert_select 'li', '1 × Programming Ruby 1.9'
   end
 
   test "should create line_item via ajax" do
@@ -50,7 +46,12 @@ class LineItemsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update line_item" do
-    patch line_item_url(@line_item), params: { line_item: { product_id: @line_item.product_id } }
+    # we need to specify the cart and product even though it's already specified in the fixture
+    # because otherwise the test generates random ids for them and then the test breaks
+    @line_item.update!(cart_id: carts(:one).id, product_id: products(:docker).id) 
+    # update the line item from docker to ruby
+    product = products(:ruby)
+    patch line_item_url(@line_item), params: { line_item: { product_id: product.id } }
     assert_redirected_to line_item_url(@line_item)
   end
 
