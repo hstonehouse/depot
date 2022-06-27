@@ -8,7 +8,7 @@
   <table>
     <tbody>
       <%= render(@cart.line_items) %> 
-      <!-- will loop if rendering collection of objects -->
+      <%# will loop if rendering collection of objects %>
     </tbody>
     <tfoot>
       <tr>
@@ -19,7 +19,8 @@
     </tfoot>
   </table>
 
-  <%= button_to 'Empty cart', @cart, 
+ <%# Use cart_url instead of @cart %>
+  <%= button_to 'Empty cart', cart_url, 
                 method: :delete,
                 form_class: 'redbutton',
                 data: { confirm: 'Are you sure?' } %>
