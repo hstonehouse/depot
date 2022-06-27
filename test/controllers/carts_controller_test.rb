@@ -38,7 +38,7 @@ class CartsControllerTest < ActionDispatch::IntegrationTest
   # end
 
   test "should show cart" do
-    get cart_url(@cart)
+    get cart_url
     assert_response :success
   end
 
@@ -47,7 +47,7 @@ class CartsControllerTest < ActionDispatch::IntegrationTest
     @cart = Cart.find(session[:cart_id])
 
     assert_difference('Cart.count', -1) do
-      delete cart_url(@cart)
+      delete cart_url
     end
 
     assert_redirected_to store_index_url
