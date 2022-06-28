@@ -11,7 +11,7 @@ class AddToCartTest < ActionDispatch::IntegrationTest
     within(".product-3") do
       click_on('Add to Cart') # act
     end
-    assert_equal current_path, "/cart" # assert
+    assert_equal current_path, "/" # assert
   end
 
   test "add multiple of same item to cart" do
@@ -21,9 +21,13 @@ class AddToCartTest < ActionDispatch::IntegrationTest
     end
 
     visit "/" # act
-    within(".product-3") do
+    # now we need to specify ul.catalog because 
+    # there is a cart partial on the sidenav,
+    # so there are multiple places where you can find .product-3
+    within("ul.catalog .product-3") do
       click_on('Add to Cart') # act
     end
+    # there is only one place where you can specifically find .product-3.quantity
     line_item_quantity = find(".product-3.quantity").text
     assert_equal "2", line_item_quantity # assert
   end
