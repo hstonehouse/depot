@@ -37,9 +37,9 @@ class CartsControllerTest < ActionDispatch::IntegrationTest
   #   assert_redirected_to cart_url(@cart)
   # end
 
-  test "should show cart" do
-    get cart_url(@cart)
-    assert_response :success
+  test "should redirect to homepage when getting cart" do
+    get cart_url
+    assert_redirected_to store_index_url
   end
 
   test "should destroy cart" do
@@ -47,7 +47,7 @@ class CartsControllerTest < ActionDispatch::IntegrationTest
     @cart = Cart.find(session[:cart_id])
 
     assert_difference('Cart.count', -1) do
-      delete cart_url(@cart)
+      delete cart_url
     end
 
     assert_redirected_to store_index_url
