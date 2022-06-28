@@ -37,9 +37,9 @@ class CartsControllerTest < ActionDispatch::IntegrationTest
   #   assert_redirected_to cart_url(@cart)
   # end
 
-  test "should show cart" do
+  test "should redirect to homepage when getting cart" do
     get cart_url
-    assert_response :success
+    assert_redirected_to store_index_url
   end
 
   test "should destroy cart" do
