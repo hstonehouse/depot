@@ -6,12 +6,16 @@ class AddToCartTest < ActionDispatch::IntegrationTest
   #   assert true
   # end
   
-  test "add to cart" do
+  test "add_to_cart" do
     visit "/" # act
     within(".product-3") do
       click_on('Add to Cart') # act
     end
     assert_equal current_path, "/" # assert
+    
+    within('[data-qa="product-title"]') do
+      assert_text 'Programming Ruby 1.9'
+    end
   end
 
   test "add multiple of same item to cart" do

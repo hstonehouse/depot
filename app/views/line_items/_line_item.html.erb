@@ -4,7 +4,7 @@
 <tr>
 <% end %>
   <td class="product-<%= line_item.product_id %> quantity"><%= line_item.quantity %></td>
-  <td><%= line_item.product.title %></td>
+  <td data-qa="product-title"><%= line_item.product.title %></td>
   <td class="price"><%= number_to_currency(line_item.total_price) %></td>
   <td>      <%= button_to 'Remove item', line_item,
                  
