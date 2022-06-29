@@ -12,9 +12,12 @@ class AddToCartTest < ActionDispatch::IntegrationTest
       click_on('Add to Cart') # act
     end
     assert_equal current_path, "/" # assert
-    
+
     within('[data-qa="product-title"]') do
-      assert_text 'Programming Ruby 1.9'
+      assert_text 'Programming Ruby 1.9' # assert
+    end
+    within("#cart tbody .price") do
+      assert text /\$[,\d]+\.\d\d/ # assert
     end
   end
 
