@@ -11,5 +11,11 @@ consumer.subscriptions.create("ProductsChannel", {
 
   received(data) {
     // Called when there's incoming data on the websocket for this channel
+    const storeElement = document.querySelector("main.store")
+    if (storeElement) {
+      // data.html is what we received from products_controller.rb
+      // we will replace main.store with everything we received from products_controller.rb
+      storeElement.innerHTML = data.html
+    }
   }
 });
