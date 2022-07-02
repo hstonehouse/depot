@@ -23,6 +23,7 @@
   <%= button_to 'Empty cart', cart_url, 
                 method: :delete,
                 form_class: 'redbutton',
-                data: { confirm: 'Are you sure?' } %>
+                data: { confirm: 'Are you sure?' },
+                remote: true %>
 
 </article>
