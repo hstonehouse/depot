@@ -17,3 +17,9 @@ three:
   cart: one
   quantity: 1
   total_price: 1200
+
+two_rails:
+  product: rails
+  cart: two_rails
+  quantity: 2
+  total_price: 3200
