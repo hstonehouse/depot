@@ -1,4 +1,5 @@
 cart = document.getElementById("cart")
+cart.style.display = ""
 cart.innerHTML = "<%= j render(@cart) %>"
 
 <%# j is an alias for escape_javascript()

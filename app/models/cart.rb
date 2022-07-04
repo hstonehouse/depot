@@ -16,6 +16,16 @@ class Cart < ApplicationRecord
         current_item
     end
 
+    def decrement_line_item_quantity(line_item)
+        if line_item.quantity > 1
+            line_item.quantity -= 1
+            line_item.total_price = line_item.product.price * line_item.quantity
+        else
+            line_item.delete
+        end
+        line_item
+    end
+
     def total_price
         line_items.to_a.sum { |item| item.total_price }
         # turns the line_items object into an array using 'to_a'

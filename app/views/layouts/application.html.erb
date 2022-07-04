@@ -21,7 +21,7 @@
 
         <div id="cart" class="carts">
         <!-- render_if is a helper in our application_helper.rb -->
-          <%= render_if controller_name != 'carts', @cart %>
+          <%= render_if @cart && @cart.line_items.any? && controller_name != 'carts', @cart %>
         </div>
         <% end %>
 
