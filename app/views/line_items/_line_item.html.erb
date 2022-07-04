@@ -4,7 +4,8 @@
 <tr>
 <% end %>
   <td>      <%= button_to '-', decrement_line_item_path(line_item), 
-                  method: :put %>
+                  method: :put,
+                  remote: true %>
   </td>
   <td class="product-<%= line_item.product_id %> quantity"><%= line_item.quantity %></td>
   <td data-qa="product-title"><%= line_item.product.title %></td>
