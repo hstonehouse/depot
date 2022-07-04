@@ -58,7 +58,11 @@ class LineItemsController < ApplicationController
     respond_to do |format|
       if !@line_item.persisted? # will be false if the line item has been deleted
         format.html { redirect_to store_index_url, notice: "Line item removed." }
-        format.js 
+        format.js do
+          if !@cart.persisted?
+            @cart = nil
+          end
+        end
         format.json { head :no_content }
       elsif @line_item.save
         format.html { redirect_to store_index_url, notice: "Line item was successfully updated." }

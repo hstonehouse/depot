@@ -1,6 +1,6 @@
 cart = document.getElementById("cart")
 cart.style.display = ""
-cart.innerHTML = "<%= j render(@cart) %>"
+cart.innerHTML = "<%= j render(@cart) if @cart %>"
 
 <%# j is an alias for escape_javascript()
 which converts the Ruby string into a format acceptable as input to JS

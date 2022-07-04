@@ -52,4 +52,14 @@ class CartTest < ActiveSupport::TestCase
 
     assert_equal 0, cart.line_items.size
   end
+  
+  test "#decrement_line_item_quantity: when quantity = 1 and it's the only line item" do
+    cart = carts(:two_rails) # arrange
+    line_item = line_items(:two_rails) # arrange
+
+    cart.decrement_line_item_quantity(line_item) # act
+    cart.decrement_line_item_quantity(line_item) # act - remove both
+
+    assert_equal false, cart.persisted?
+  end
 end

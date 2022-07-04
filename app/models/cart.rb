@@ -22,6 +22,9 @@ class Cart < ApplicationRecord
             line_item.total_price = line_item.product.price * line_item.quantity
         else
             line_item.delete
+            if line_items.empty? # we are in the cart model so we don't have to write cart.line_items
+                destroy # we are in the cart model so we are in the cart
+            end
         end
         line_item
     end
