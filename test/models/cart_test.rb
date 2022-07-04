@@ -32,4 +32,24 @@ class CartTest < ActiveSupport::TestCase
     assert_equal 1, line_item.quantity # assert
     assert_equal 3000, line_item.total_price # assert
   end
+
+  test "#decrement_line_item_quantity: when quantity > 1" do
+    cart = carts(:two_rails) # arrange
+    line_item = line_items(:two_rails) # arrange
+
+    cart.decrement_line_item_quantity(line_item) #act
+
+    assert_equal 1, line_item.quantity # assert
+    assert_equal 1600, line_item.total_price # assert
+  end
+
+  test "#decrement_line_item_quantity: when quantity = 1" do
+    cart = carts(:two_rails) # arrange
+    line_item = line_items(:two_rails) # arrange
+
+    cart.decrement_line_item_quantity(line_item) # act
+    cart.decrement_line_item_quantity(line_item) # act - remove both
+
+    assert_equal 0, cart.line_items.size
+  end
 end

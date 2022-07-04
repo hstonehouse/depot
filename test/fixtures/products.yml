@@ -24,3 +24,9 @@ ruby:
   image_url: ruby.jpeg
   price: 1200
   
+rails:
+  title: Rails
+  description:
+    Rails is fun
+  image_url: ruby.jpeg
+  price: 1600
