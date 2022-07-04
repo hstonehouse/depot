@@ -1,7 +1,7 @@
 class LineItemsController < ApplicationController
   include CurrentCart
-  before_action :set_cart, only: [:create, :destroy]
-  before_action :set_line_item, only: %i[ show edit update destroy ]
+  before_action :set_cart, only: [:create, :destroy, :update, :decrement]
+  before_action :set_line_item, only: %i[ show edit update destroy decrement]
 
   # GET /line_items or /line_items.json
   def index
@@ -51,12 +51,30 @@ class LineItemsController < ApplicationController
     end
   end
 
+  #PUT /line_items/1 or /line_items/1.json
+  def decrement
+    @line_item = @cart.decrement_line_item_quantity(@line_item)
+
+    respond_to do |format|
+      if !@line_item.persisted? # will be false if the line item has been deleted
+        format.html { redirect_to store_index_url, notice: "Line item removed." }
+        format.json { head :no_content }
+      elsif @line_item.save
+        format.html { redirect_to store_index_url, notice: "Line item was successfully updated." }
+        format.json { render :show, status: :ok, location: @line_item }
+      else
+        format.html { render :edit, status: :unprocessable_entity }
+        format.json { render json: @line_item.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   # DELETE /line_items/1 or /line_items/1.json
   def destroy
     @line_item.destroy
 
     respond_to do |format|
-      format.html { redirect_to store_index_url, notice: "Line item was successfully destroyed." }
+      format.html { redirect_to store_index_url, notice: "Line item removed." }
       format.json { head :no_content }
     end
   end
