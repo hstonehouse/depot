@@ -11,12 +11,12 @@ class DecrementLineItemTest < ActionDispatch::IntegrationTest
         add_to_cart(".catalog .product-#{product.id}") # act
         add_to_cart(".catalog .product-#{product.id}") # act
 
-        decrement_quantity("#cart .product-#{product.id}.remove-button") # act
+        decrement_quantity("#cart .product-#{product.id}.minus-button") # act
     
         line_item_quantity = find(".product-#{product.id}.quantity").text
         assert_equal "1", line_item_quantity # assert
 
-        decrement_quantity("#cart .product-#{product.id}.remove-button") 
+        decrement_quantity("#cart .product-#{product.id}.minus-button") 
         
         assert find("#cart", visible: false) # assert that we can find the cart but can't see it
     end
