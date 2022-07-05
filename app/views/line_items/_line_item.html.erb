@@ -1,17 +1,20 @@
 <% if line_item == @current_item %>
-<tr class="line-item-highlight">
-<% else %>
-<tr>
-<% end %>
-  <td class="product-<%= line_item.product_id %> remove-button">      <%= button_to '-', decrement_line_item_path(line_item), 
+  <tr class="line-item-highlight">
+  <% else %>
+    <tr>
+    <% end %>
+    <td class="product-<%= line_item.product_id %> minus-button">      <%= button_to '-', decrement_line_item_path(line_item), 
                   method: :put,
                   remote: true %>
-  </td>
-  <td class="product-<%= line_item.product_id %> quantity"><%= line_item.quantity %></td>
-  <td data-qa="product-title"><%= line_item.product.title %></td>
-  <td class="price"><%= number_to_currency(line_item.total_price) %></td>
-  <td>      <%= button_to 'Remove item', line_item,
+    </td>
+    <td class="product-<%= line_item.product_id %> plus-button">      <%= button_to '+', line_items_path(product_id: line_item.product_id),
+                    remote: true %>
+    </td>
+    <td class="product-<%= line_item.product_id %> quantity"><%= line_item.quantity %></td>
+    <td data-qa="product-title"><%= line_item.product.title %></td>
+    <td class="price"><%= number_to_currency(line_item.total_price) %></td>
+    <td>      <%= button_to 'Remove item', line_item,
                   method: :delete, 
                   data: { confirm: 'Are you sure?'} %>
-  </td>
-</tr>
+    </td>
+  </tr>
