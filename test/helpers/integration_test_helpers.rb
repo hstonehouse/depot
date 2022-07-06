@@ -1,9 +1,11 @@
 module IntegrationTestHelpers
     private
-    def change_quantity(button_css_class, submit_value)
-        within(button_css_class) do
-            click_on(submit_value)
-        end
+    def increment(product)
+        find("[data-qa='product-#{product.id}-plus-button']").click
+    end
+
+    def decrement(product)
+        find("[data-qa='product-#{product.id}-minus-button']").click
     end
 
     def add_to_cart_using_button(product)
