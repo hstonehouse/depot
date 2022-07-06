@@ -3,12 +3,16 @@
   <% else %>
     <tr>
     <% end %>
-    <td class="product-<%= line_item.product_id %> minus-button">      <%= button_to '-', decrement_line_item_path(line_item), 
+    <td>
+        <%= button_to '-', decrement_line_item_path(line_item),
+                  data:{qa: "product-#{line_item.product.id}-minus-button"},
                   method: :put,
                   remote: true %>
     </td>
-    <td class="product-<%= line_item.product_id %> plus-button">      <%= button_to '+', line_items_path(product_id: line_item.product_id),
-                    remote: true %>
+    <td>
+        <%= button_to '+', line_items_path(product_id: line_item.product_id),
+                  data:{qa: "product-#{line_item.product.id}-plus-button"},
+                  remote: true %>
     </td>
     <td class="product-<%= line_item.product_id %> quantity"><%= line_item.quantity %></td>
     <td data-qa="product-title"><%= line_item.product.title %></td>
