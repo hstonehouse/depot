@@ -2,9 +2,11 @@ require "test_helper"
 require "pry"
 
 class AddToCartTest < ActionDispatch::IntegrationTest
-  # test "the truth" do
-  #   assert true
-  # end
+  include IntegrationTestHelpers
+
+  setup do
+    @product = products(:ruby)
+  end
   
   test "add_to_cart" do
     visit "/" # act
