@@ -9,8 +9,9 @@ class DecrementLineItemTest < ActionDispatch::IntegrationTest
 
         visit "/" # act
         
-        add_to_cart(".catalog .product-#{product.id}") # act
-        add_to_cart(".catalog .product-#{product.id}") # act
+        2.times do
+            add_to_cart(".catalog .product-#{product.id}")  # act
+        end
 
         change_quantity("#cart .product-#{product.id}.minus-button", "-") # act
     
