@@ -7,7 +7,10 @@
     <% @products.each do |product| %>
       <% cache product do %>
         <li>
-          <%= link_to line_items_path(product_id: product), method: :post, remote: true do %>
+          <%= link_to line_items_path(product_id: product),
+            method: :post,
+            data:{qa: "image-product-#{product.id}"},
+            remote: true do %>
             <%= image_tag(product.image_url) %>
           <% end %>
           <%# image_tag generates <img> %>
@@ -19,8 +22,9 @@
           <div class="price product-<%= product.id %>">
             <%= number_to_currency(product.price) %>
             <%= button_to 'Add to Cart', line_items_path(product_id: product),
-            remote: true %>
-             <%# remote: true tells the browser to ask for JS from server  %>
+                data:{qa: "button-product-#{product.id}"},
+                remote: true %>
+            <%# remote: true tells the browser to ask for JS from server  %>
           </div>
         </li>
       <% end %>
