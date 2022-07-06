@@ -2,6 +2,7 @@ require "test_helper"
 require "pry"
 
 class DecrementLineItemTest < ActionDispatch::IntegrationTest
+    include IntegrationTestHelpers
 
     test "decrement_line_item_quantity: when quantity = 1 and it's the only line item" do
         product = products(:rails) # arrange
@@ -19,18 +20,5 @@ class DecrementLineItemTest < ActionDispatch::IntegrationTest
         decrement_quantity("#cart .product-#{product.id}.minus-button") 
         
         assert find("#cart", visible: false) # assert that we can find the cart but can't see it
-    end
-
-    private
-    def decrement_quantity(product)
-        within(product) do
-            click_on("-")
-        end
-    end
-
-    def add_to_cart(product)
-        within(product) do
-            click_on('Add to Cart')
-        end
     end
 end
