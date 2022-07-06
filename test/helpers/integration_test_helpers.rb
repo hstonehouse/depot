@@ -6,10 +6,12 @@ module IntegrationTestHelpers
         end
     end
 
-    def add_to_cart(product)
-        within(product) do
-            click_on('Add to Cart')
-        end
+    def add_to_cart_using_button(product)
+        find("[data-qa='button-product-#{product.id}']").click
+    end
+
+    def add_to_cart_using_image(product)
+        find("[data-qa='image-product-#{product.id}']").click
     end
 
 end
