@@ -10,7 +10,7 @@ class IncrementLineItemTest < ActionDispatch::IntegrationTest
         visit "/" # act
 
         add_to_cart_using_button(product) # act
-        change_quantity("#cart .product-#{product.id}.plus-button", "+")
+        increment(product)
 
         line_item_quantity = find(".product-#{product.id}.quantity").text
         assert_equal "2", line_item_quantity # assert
