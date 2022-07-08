@@ -6,7 +6,7 @@
   <% cache @products do %>
     <% @products.each do |product| %>
       <% cache product do %>
-        <li>
+        <%= content_tag(:li, class: { "line-item-highlight": @product == product }) do %>
           <%= link_to line_items_path(product_id: product),
             method: :post,
             data:{qa: "image-product-#{product.id}"},
@@ -26,7 +26,7 @@
                 remote: true %>
             <%# remote: true tells the browser to ask for JS from server  %>
           </div>
-        </li>
+        <% end %>
       <% end %>
     <% end %>
   <% end %>
